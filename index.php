@@ -45,7 +45,7 @@
                         <?php
                             $servername = "localhost";
                             $username = "root";
-                            $password = "";
+                            $password = "processor";
                             $dbname = "todo";
 
                             // Create connection
@@ -90,7 +90,28 @@
                 -->
                 </ul>
                 <div class="todo-footer">
-                    <strong><span class="count-todos">0</span></strong> Items Left
+                    <strong><span class="count-todos">
+                         <?php
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "processor";
+                            $dbname = "todo";
+                            $count = 0;
+
+                            // Create connection
+                            $conn = new mysqli($servername, $username, $password, $dbname);
+                            // Check connection
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            } 
+
+                            $sql = "SELECT * FROM todo_list where status = 1";
+                            $result = $conn->query($sql);
+                            $count  = $result->num_rows;
+                            echo $count;
+                            $conn->close();
+                            ?>
+                    </span></strong> Items Left
                 </div>
             </div>
         </div>
@@ -101,7 +122,7 @@
                      <?php
                             $servername = "localhost";
                             $username = "root";
-                            $password = "";
+                            $password = "processor";
                             $dbname = "todo";
 
                             // Create connection

@@ -14,7 +14,7 @@ $(document).ready(function(){
 		$.post( "jdbc.php", { task: task, status:1 },function(data){
 
 			$(".todos").append('<li class="ui-state-default tasklst tasksno'+data+'"><div class="checkbox"><label><input class="tasks" type="checkbox" value="'+data+'" />'+task+'</label></div></li>');
-			
+			$(".count-todos").html($('.tasklst').length );
 		});
 		
 		//return todoslists.indexOf(task);
@@ -26,7 +26,7 @@ $(document).ready(function(){
 			completedlists.push(todoslists[index]);
 			//console.log(index);
 			//console.log(todoslists);
-		   $(".count-todos").html($('.tasklst').length );
+		   
 		}
 
 	}
@@ -50,6 +50,7 @@ $(document).ready(function(){
 			} );
 
 			$(".tasksno"+id).remove();
+			$(".count-todos").html($('.tasklst').length );
 			
 			completeTodos(id);
 		}
