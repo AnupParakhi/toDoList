@@ -59,7 +59,8 @@ $(document).ready(function(){
 
 	$(".todolist").on('click', '.btn' ,function(){
 		var va=$(this).val();
-		console.log($(this).val());
+		$.post("delete.php" , {id:va});
+		console.log(va);
 
 	});
 	/*$(".todolist").on('click', '.tasks' ,function(){
