@@ -45,11 +45,8 @@ $(document).ready(function(){
 			$.post( "state.php", { id:id },function(data){
 				console.log(data);
 
-<<<<<<< HEAD
 				$("#done-items").append('<li class="Donetaskno'+id+'" >'+data+' <button class="remove-item btn btn-default btn-xs pull-right" value="'+id+'"><span class="glyphicon glyphicon-remove" value="'+id+'"></span></button></li>');
-=======
-				$("#done-items").append('<li>'+data+' <button class="remove-item btn btn-default btn-xs pull-right" value="'+data+'"><span class="glyphicon glyphicon-remove"></span></button></li>');
->>>>>>> 4778da76e3c29148dbe04b0c26e476755f1789b8
+
 			} );
 
 			$(".tasksno"+id).remove();

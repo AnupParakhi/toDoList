@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "processor";
+$password = "";
 $dbname = "todo";
 
 $task=$_POST['task'];

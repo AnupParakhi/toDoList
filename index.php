@@ -45,7 +45,7 @@
                         <?php
                             $servername = "localhost";
                             $username = "root";
-                            $password = "processor";
+                            $password = "";
                             $dbname = "todo";
 
                             // Create connection
@@ -101,7 +101,7 @@
                      <?php
                             $servername = "localhost";
                             $username = "root";
-                            $password = "processor";
+                            $password = "";
                             $dbname = "todo";
 
                             // Create connection
@@ -117,11 +117,9 @@
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
-<<<<<<< HEAD
+
                                     echo '<li class = "Donetaskno'.$row['id'].'">'.$row['task'].'<button class="remove-item btn btn-default btn-xs pull-right" value="'.$row['id'].'"><span class="glyphicon glyphicon-remove"></span></button></li>';
-=======
-                                    echo '<li>'.$row['task'].'<button class="remove-item btn btn-default btn-xs pull-right" value="'.$row['task'].'"><span class="glyphicon glyphicon-remove"></span></button></li>';
->>>>>>> 4778da76e3c29148dbe04b0c26e476755f1789b8
+
                                 }
                             } else {
                                 echo "0 results";
