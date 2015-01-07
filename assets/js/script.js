@@ -34,9 +34,7 @@ $(document).ready(function(){
 	$(".add-todo").keypress(function(e){
 		if(e.which ==  13){9
 			var val = $(".add-todo").val();
-			var id = addTodos(val);
-			
-			
+			var id = addTodos(val);				
 			$(".add-todo").val('');
 		}
 	});
@@ -47,7 +45,11 @@ $(document).ready(function(){
 			$.post( "state.php", { id:id },function(data){
 				console.log(data);
 
+<<<<<<< HEAD
 				$("#done-items").append('<li class="Donetaskno'+id+'" >'+data+' <button class="remove-item btn btn-default btn-xs pull-right" value="'+id+'"><span class="glyphicon glyphicon-remove" value="'+id+'"></span></button></li>');
+=======
+				$("#done-items").append('<li>'+data+' <button class="remove-item btn btn-default btn-xs pull-right" value="'+data+'"><span class="glyphicon glyphicon-remove"></span></button></li>');
+>>>>>>> 4778da76e3c29148dbe04b0c26e476755f1789b8
 			} );
 
 			$(".tasksno"+id).remove();
@@ -55,7 +57,20 @@ $(document).ready(function(){
 			completeTodos(id);
 		}
 	});
-	$(".todolist").on('click', '.tasks' ,function(){
+
+
+	$(".todolist").on('click', '.btn' ,function(){
+		var va=$(this).val();
+
+		console.log(va);		
+		$.post("delete.php", {task:va},function(getId){
+			console.log(getId);
+			
+			console.log("After click");
+		});
+
+	});
+	/*$(".todolist").on('click', '.tasks' ,function(){
 		if( $(this).is(':checked') ){
 			var id =+$(this).val();
 			console.log(id);
@@ -67,7 +82,7 @@ $(document).ready(function(){
 			//$("#done-items").append('<li>'+todoslists[id]+' <button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button></li>');
 			//completeTodos(id);
 		}
-	});
+	});*/
 
 	$(".todolist").on('click', '.btn' ,function(){
 			var id =+$(this).val();
