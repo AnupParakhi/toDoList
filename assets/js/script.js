@@ -14,7 +14,7 @@ $(document).ready(function(){
 			console.log(data);
 		} );
 		//return todoslists.indexOf(task);
-		return data;
+		return task;
 
 	}
 
@@ -40,8 +40,12 @@ $(document).ready(function(){
 	});
 	$(".todolist").on('click', '.tasks' ,function(){
 		if( $(this).is(':checked') ){
-			var id = $(this).val();
+			var id = $(this).val();			
 			$(".tasksno"+id).remove();
+			console.log(id);
+			$.post( "second.php", { id:id },function(data){
+			console.log(data);
+			} );
 			$("#done-items").append('<li>'+todoslists[id]+' <button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button></li>');
 			completeTodos(id);
 		}
