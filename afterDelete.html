@@ -1,0 +1,26 @@
+ <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "processor";
+    $dbname = "todo";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+
+    $sql = "SELECT * FROM todo_list where status = 0";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo '<li>'.$row['task'].'<button class="remove-item btn btn-default btn-xs pull-right" value="'.$row['task'].'"><span class="glyphicon glyphicon-remove"></span></button></li>';
+        }
+    } else {
+        echo "0 results";
+    }
+    $conn->close();
+?>

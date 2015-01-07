@@ -4,24 +4,22 @@ $username = "root";
 $password = "processor";
 $dbname = "todo";
 
-$task=$_POST['task'];
-$status=$_POST['status'];
+$task = $_POST['task'];
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} else{
-	$sql = "INSERT INTO todo_list (task, status)
-VALUES ('".$task."', '".$status."')";
+} 
+
+// sql to delete a record
+$sql = "DELETE FROM todo_list WHERE task='$task'";
 
 if ($conn->query($sql) === TRUE) {
-   // echo "New record created successfully";
-    echo $conn->insert_id;
+    echo "Record deleted successfully";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+    echo "Error deleting record: " . $conn->error;
 }
 
 $conn->close();

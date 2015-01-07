@@ -34,9 +34,7 @@ $(document).ready(function(){
 	$(".add-todo").keypress(function(e){
 		if(e.which ==  13){9
 			var val = $(".add-todo").val();
-			var id = addTodos(val);
-			
-			
+			var id = addTodos(val);				
 			$(".add-todo").val('');
 		}
 	});
@@ -59,8 +57,12 @@ $(document).ready(function(){
 
 	$(".todolist").on('click', '.btn' ,function(){
 		var va=$(this).val();
-		console.log($(this).val());
-
+		console.log(va);		
+		$.post("delete.php", {task:va},function(getId){
+			console.log(getId);
+			
+			console.log("After click");
+		});
 	});
 	/*$(".todolist").on('click', '.tasks' ,function(){
 		if( $(this).is(':checked') ){
