@@ -45,7 +45,7 @@
                         <?php
                             $servername = "localhost";
                             $username = "root";
-                            $password = "processor";
+                            $password = "";
                             $dbname = "todo";
 
                             // Create connection
@@ -55,13 +55,13 @@
                                 die("Connection failed: " . $conn->connect_error);
                             } 
 
-                            $sql = "SELECT * FROM todo_list where status = 0";
+                            $sql = "SELECT * FROM todo_list where status = 1";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
-                                    echo '<li class="ui-state-default tasklst tasksno'.$row['task'].'"><div class="checkbox"><label><input class="tasks" type="checkbox" value="'.$row['task'].'">'.$row['task'].'</label></div></li>';
+                                    echo '<li class="ui-state-default tasklst tasksno'.$row['id'].'"><div class="checkbox"><label><input class="tasks" type="checkbox" value="'.$row['id'].'">'.$row['task'].'</label></div></li>';
                                 }
                             } else {
                                 echo "0 results";
@@ -98,7 +98,32 @@
             <div class="todolist">
              <h1>Already Done</h1>
                 <ul id="done-items" class="list-unstyled">
-                    
+                     <?php
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "";
+                            $dbname = "todo";
+
+                            // Create connection
+                            $conn = new mysqli($servername, $username, $password, $dbname);
+                            // Check connection
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            } 
+
+                            $sql = "SELECT * FROM todo_list where status = 0";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                // output data of each row
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<li>'.$row['task'].'<button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button></li>';
+                                }
+                            } else {
+                                echo "0 results";
+                            }
+                            $conn->close();
+                            ?>
                     
                 </ul>
             </div>
