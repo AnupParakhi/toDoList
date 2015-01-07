@@ -117,7 +117,7 @@
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
-                                    echo '<li>'.$row['task'].'<button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button></li>';
+                                    echo '<li class = "Donetaskno'.$row['id'].'">'.$row['task'].'<button class="remove-item btn btn-default btn-xs pull-right" value="'.$row['id'].'"><span class="glyphicon glyphicon-remove"></span></button></li>';
                                 }
                             } else {
                                 echo "0 results";
