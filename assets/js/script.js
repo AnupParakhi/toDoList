@@ -47,7 +47,7 @@ $(document).ready(function(){
 			$.post( "state.php", { id:id },function(data){
 				console.log(data);
 
-				$("#done-items").append('<li>'+data+' <button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button></li>');
+				$("#done-items").append('<li>'+data+' <button class="remove-item btn btn-default btn-xs pull-right" value="'+data+'"><span class="glyphicon glyphicon-remove"></span></button></li>');
 			} );
 
 			$(".tasksno"+id).remove();
@@ -55,7 +55,14 @@ $(document).ready(function(){
 			completeTodos(id);
 		}
 	});
-	$(".todolist").on('click', '.tasks' ,function(){
+
+
+	$(".todolist").on('click', '.btn' ,function(){
+		var va=$(this).val();
+		console.log($(this).val());
+
+	});
+	/*$(".todolist").on('click', '.tasks' ,function(){
 		if( $(this).is(':checked') ){
 			var id =+$(this).val();
 			console.log(id);
@@ -67,7 +74,7 @@ $(document).ready(function(){
 			//$("#done-items").append('<li>'+todoslists[id]+' <button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button></li>');
 			//completeTodos(id);
 		}
-	});
+	});*/
 
 
 });
