@@ -45,7 +45,7 @@
                         <?php
                             $servername = "localhost";
                             $username = "root";
-                            $password = "processor";
+                            $password = "";
                             $dbname = "todo";
 
                             // Create connection
@@ -94,7 +94,7 @@
                          <?php
                             $servername = "localhost";
                             $username = "root";
-                            $password = "processor";
+                            $password = "";
                             $dbname = "todo";
                             $count = 0;
 
@@ -122,7 +122,7 @@
                      <?php
                             $servername = "localhost";
                             $username = "root";
-                            $password = "processor";
+                            $password = "";
                             $dbname = "todo";
 
                             // Create connection

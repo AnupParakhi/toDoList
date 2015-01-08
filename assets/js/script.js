@@ -3,6 +3,7 @@ $(document).ready(function(){
 	//var todoslists = [];
 	//var completedlists= [];
 	var count;
+	var allDone = [];
 
 	function lengthoflist() {
 		
@@ -90,5 +91,32 @@ $(document).ready(function(){
 			 } );
 			 $(".Donetaskno"+id).remove();
 	});
+
+	$("#checkAll").click(
+		function(){
+		var texts= $(".tasks").map(function() {
+		   return $(this).val();
+		}).get();
+
+		//console.log(texts);
+		var count = $('.tasklst').length;
+
+		for (i = 0 ; i < count ; i ++)
+		{
+			var id = texts[i];
+			//console.log(id);
+			$.post( "state.php", { id:id },function(data){
+				console.log(data);
+				$("#done-items").append('<li class="Donetaskno'+id+'" >'+data+' <button class="remove-item btn btn-default btn-xs pull-right" value="'+id+'"><span class="glyphicon glyphicon-remove" value="'+id+'"></span></button></li>');
+
+			} );
+
+			$(".tasksno"+id).remove();
+			$(".count-todos").html($('.tasklst').length );
+			
+			//completeTodos(id);
+		}
+	}
+	)
 
 });

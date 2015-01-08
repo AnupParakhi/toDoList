@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "processor";
+$password = "";
 $dbname = "todo";
 
 $id = $_POST['id'];
